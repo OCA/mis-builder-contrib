@@ -8,7 +8,7 @@
     "author": "Eficent, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",
-    'website': 'https://github.com/OCA/account-financial-tools',
+    'website': 'https://github.com/OCA/mis-builder-contrib',
     'depends': ['mis_builder', 'account_move_budget'],
     'data': [
         'view/mis_builder.xml',
