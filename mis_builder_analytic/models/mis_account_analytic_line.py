@@ -11,35 +11,24 @@ class MisAccountAnalyticLine(models.Model):
 
     date = fields.Date()
     analytic_line_id = fields.Many2one(
-        string="Analytic entry",
-        comodel_name='account.analytic.line',
+        string="Analytic entry", comodel_name="account.analytic.line"
     )
     account_id = fields.Many2one(
-        string='Account',
-        comodel_name='account.analytic.account',
+        string="Account", comodel_name="account.analytic.account"
     )
-    company_id = fields.Many2one(
-        string='Company',
-        comodel_name='res.company',
-    )
-    balance = fields.Float(
-        string='Balance',
-    )
-    debit = fields.Float(
-        string='Debit',
-    )
-    credit = fields.Float(
-        string='Credit',
-    )
+    company_id = fields.Many2one(string="Company", comodel_name="res.company")
+    balance = fields.Float(string="Balance")
+    debit = fields.Float(string="Debit")
+    credit = fields.Float(string="Credit")
     state = fields.Selection(
-        [('draft', 'Unposted'), ('posted', 'Posted')],
-        string='Status',
+        [("draft", "Unposted"), ("posted", "Posted")], string="Status"
     )
 
     @api.model_cr
     def init(self):
-        tools.drop_view_if_exists(self._cr, 'mis_account_analytic_line')
-        self._cr.execute("""
+        tools.drop_view_if_exists(self._cr, "mis_account_analytic_line")
+        self._cr.execute(
+            """
             CREATE OR REPLACE VIEW mis_account_analytic_line AS (
                 SELECT
                     aal.id AS id,
@@ -59,4 +48,5 @@ class MisAccountAnalyticLine(models.Model):
                     aal.amount as balance
                 FROM
                     account_analytic_line aal
-            )""")
+            )"""
+        )
