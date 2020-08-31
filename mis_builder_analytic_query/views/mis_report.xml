@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="mis_report_view_form">
+        <field name="inherit_id" ref="mis_builder.mis_report_view_form" />
+        <field name="model">mis.report</field>
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='query_ids']/tree/field[@name='model_id']"
+                position="after"
+            >
+                <field name="analytic_account_field_id" />
+                <field
+                    name="parent_model_id"
+                    options="{'no_quick_create': True, 'no_create_edit': True}"
+                />
+                <field
+                    name="analytic_account_parent_field_id"
+                    domain="[('model_id', '=', parent_model_id)]"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
