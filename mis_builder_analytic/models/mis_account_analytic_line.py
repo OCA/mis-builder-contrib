@@ -24,7 +24,6 @@ class MisAccountAnalyticLine(models.Model):
         [("draft", "Unposted"), ("posted", "Posted")], string="Status"
     )
 
-    @api.model_cr
     def init(self):
         tools.drop_view_if_exists(self._cr, "mis_account_analytic_line")
         self._cr.execute(
