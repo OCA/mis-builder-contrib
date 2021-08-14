@@ -10,9 +10,9 @@ MIS Builder extension modules.
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[mis_builder_analytic](mis_builder_analytic/) | 11.0.1.0.0 | Provide account analytic lines for MIS builder reports
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[mis_builder_analytic](mis_builder_analytic/) | 11.0.1.0.0 |  | Provide account analytic lines for MIS builder reports
 
 [//]: # (end addons)
 
