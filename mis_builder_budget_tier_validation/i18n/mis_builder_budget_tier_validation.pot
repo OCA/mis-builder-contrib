@@ -1,0 +1,86 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mis_builder_budget_tier_validation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_form_inherit_tier
+msgid ""
+"<i class=\"fa fa-info-circle\"/>This budget needs to be\n"
+"                        validated."
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_form_inherit_tier
+msgid "<i class=\"fa fa-thumbs-down\"/> Operation has been <b>rejected</b>."
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_form_inherit_tier
+msgid "<i class=\"fa fa-thumbs-up\"/> Operation has been <b>validated</b>!"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_filter
+msgid "Budgets validated and ready to be confirmed"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model:ir.model,name:mis_builder_budget_tier_validation.model_mis_budget
+msgid "MIS Budget by KPI"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_filter
+msgid "My Budgets to review"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_filter
+msgid "Need actions"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_filter
+msgid "Needs my Review"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_form_inherit_tier
+msgid "Reject"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_form_inherit_tier
+msgid "Request Validation"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_form_inherit_tier
+msgid "Restart Validation"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model:ir.model,name:mis_builder_budget_tier_validation.model_tier_definition
+msgid "Tier Definition"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_form_inherit_tier
+msgid "Validate"
+msgstr ""
+
+#. module: mis_builder_budget_tier_validation
+#: model_terms:ir.ui.view,arch_db:mis_builder_budget_tier_validation.view_mis_budget_filter
+msgid "Validated"
+msgstr ""
