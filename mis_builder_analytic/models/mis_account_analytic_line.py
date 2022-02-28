@@ -14,7 +14,10 @@ class MisAccountAnalyticLine(models.Model):
         string="Analytic entry", comodel_name="account.analytic.line"
     )
     account_id = fields.Many2one(
-        string="Account", comodel_name="account.analytic.account"
+        string="Account", comodel_name="account.account"
+    )
+    analytic_account_id = fields.Many2one(
+        string="Analytic Account", comodel_name="account.analytic.account"
     )
     company_id = fields.Many2one(string="Company", comodel_name="res.company")
     balance = fields.Float(string="Balance")
@@ -34,7 +37,8 @@ class MisAccountAnalyticLine(models.Model):
                     aal.id AS id,
                     aal.id AS analytic_line_id,
                     aal.date as date,
-                    aal.account_id as account_id,
+                    aal.general_account_id as account_id,
+                    aal.account_id as analytic_account_id,
                     aal.company_id as company_id,
                     'posted'::VARCHAR as state,
                     CASE
