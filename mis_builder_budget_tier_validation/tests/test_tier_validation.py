@@ -1,19 +1,18 @@
 # Copyright 2018 Eficent Business and IT Consulting Services S.L.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
+import odoo.tests
 from odoo.tests import common
 
 from .common import setup_test_model, teardown_test_model
 from .tier_validation_tester import TierValidationTester
 
 
-@common.at_install(False)
-@common.post_install(True)
+@odoo.tests.common.tagged("post_install", "-at_install")
 class TestMisBudgetTierValidation(common.SavepointCase):
     @classmethod
     def setUpClass(cls):
-        super(TestMisBudgetTierValidation, cls).setUpClass()
-
+        res = super(TestMisBudgetTierValidation, cls).setUpClass()
         setup_test_model(cls.env, [TierValidationTester])
 
         cls.test_model = cls.env[TierValidationTester._name]
@@ -52,11 +51,12 @@ class TestMisBudgetTierValidation(common.SavepointCase):
         )
 
         cls.test_record = cls.test_model.create({"test_field": 2.5})
+        return res
 
     @classmethod
     def tearDownClass(cls):
         teardown_test_model(cls.env, [TierValidationTester])
-        super(TestMisBudgetTierValidation, cls).tearDownClass()
+        return super(TestMisBudgetTierValidation, cls).tearDownClass()
 
     def test_01_tier_definition_models(self):
         """When the user can validate all future reviews, it is not needed
