@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* mis_builder_analytic
+# 	* mis_builder_analytic
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: <>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,6 +16,11 @@ msgstr ""
 #. module: mis_builder_analytic
 #: model:ir.model.fields,field_description:mis_builder_analytic.field_mis_account_analytic_line__account_id
 msgid "Account"
+msgstr ""
+
+#. module: mis_builder_analytic
+#: model:ir.model.fields,field_description:mis_builder_analytic.field_mis_account_analytic_line__analytic_account_id
+msgid "Analytic Account"
 msgstr ""
 
 #. module: mis_builder_analytic
@@ -69,7 +74,7 @@ msgid "MIS Account Analytic Line"
 msgstr ""
 
 #. module: mis_builder_analytic
-#: selection:mis.account.analytic.line,state:0
+#: model:ir.model.fields.selection,name:mis_builder_analytic.selection__mis_account_analytic_line__state__posted
 msgid "Posted"
 msgstr ""
 
@@ -79,7 +84,6 @@ msgid "Status"
 msgstr ""
 
 #. module: mis_builder_analytic
-#: selection:mis.account.analytic.line,state:0
+#: model:ir.model.fields.selection,name:mis_builder_analytic.selection__mis_account_analytic_line__state__draft
 msgid "Unposted"
 msgstr ""
-
