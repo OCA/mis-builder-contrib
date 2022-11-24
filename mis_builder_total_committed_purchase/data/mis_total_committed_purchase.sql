@@ -22,6 +22,8 @@ CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
         pol.name AS name,
         po.date_planned::date as date,
         pol.account_analytic_id as analytic_account_id,
+        pol.product_id as product_id,
+        pol.order_id as purchase_order_id,
         pol.id AS res_id,
         'purchase.order.line' AS res_model,
         CASE
