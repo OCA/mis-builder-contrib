@@ -16,8 +16,10 @@ class MisTotalCommittedPurchase(models.Model):
     analytic_account_id = fields.Many2one(
         comodel_name="account.analytic.account", string="Analytic Account"
     )
-    account_id = fields.Many2one(comodel_name="account.account", string="Account")
-    company_id = fields.Many2one(comodel_name="res.company", string="Company")
+    account_id = fields.Many2one(comodel_name="account.account")
+    company_id = fields.Many2one(comodel_name="res.company")
+    product_id = fields.Many2one(comodel_name="product.product")
+    purchase_order_id = fields.Many2one(comodel_name="purchase.order")
     credit = fields.Float()
     debit = fields.Float()
     date = fields.Date()
