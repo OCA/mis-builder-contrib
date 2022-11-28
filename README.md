@@ -17,7 +17,11 @@ TODO: add repo description.
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[mis_builder_total_committed_purchase](mis_builder_total_committed_purchase/) | 15.0.1.0.1 |  | Addon to create a alternative source based on all purchase order line with MIS Builder.
 
 [//]: # (end addons)
 
