@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[mis_builder_budget_product](mis_builder_budget_product/) | 15.0.1.0.0 |  | Offer more options for budgets for MIS reports
 [mis_builder_total_committed_purchase](mis_builder_total_committed_purchase/) | 15.0.1.0.1 |  | Addon to create a alternative source based on all purchase order line with MIS Builder.
 
 [//]: # (end addons)
