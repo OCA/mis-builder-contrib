@@ -8,4 +8,4 @@ To use this module, you need to:
    *Source* and select *MIS Account Analytic Line* on the field
    *Move lines source*,
 #. Complete the rest of the report fields and click on Preview button.
-#. Yow will se the report based on Account Analytic Lines.
+#. Yow will see the report based on Account Analytic Lines.
