@@ -14,6 +14,13 @@ CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
                LIMIT 1) AS date_end
             FROM res_currency_rate r
               JOIN res_company c ON (r.company_id is null or r.company_id = c.id)
+        ),
+        pol_analytic AS (
+            SELECT
+                id,
+                jsonb_object_keys(analytic_distribution)::INTEGER AS analytic_account_id,
+                (analytic_distribution -> jsonb_object_keys(analytic_distribution))::NUMERIC AS analytic_amount
+            FROM purchase_order_line
         )
 
         /* ALL CONFIRMED PURCHASES */
@@ -21,7 +28,6 @@ CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
         pol.company_id AS company_id,
         pol.name AS name,
         po.date_planned::date as date,
-        pol.account_analytic_id as analytic_account_id,
         pol.product_id as product_id,
         pol.order_id as purchase_order_id,
         pol.id AS res_id,
@@ -36,15 +42,29 @@ CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
           WHEN (cast(split_part(ipd.value_reference, ',', 2) AS INTEGER) IS NOT NULL) THEN cast(split_part(ipd.value_reference, ',', 2) AS INTEGER)
           ELSE cast(NULL AS INTEGER)
         END AS account_id,
+
         CASE
-          WHEN (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2) >= 0.0 THEN (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2)
-          ELSE 0.0
+            WHEN
+                aaa.id = pol_analytic.analytic_account_id
+                AND (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2) >= 0.0
+            THEN (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2)
+                * COALESCE(pol_analytic.analytic_amount, 100.0) / 100.0
+            ELSE 0.0
         END AS debit,
+
         CASE
-          WHEN (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2)  < 0 THEN (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2)
-          ELSE 0.0
-        END AS credit
+            WHEN
+                aaa.id = pol_analytic.analytic_account_id
+                AND (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2)  < 0
+            THEN (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2)
+                * COALESCE(pol_analytic.analytic_amount, 100.0) / 100.0
+        ELSE 0.0
+        END AS credit,
+        pol_analytic.analytic_account_id
+
         FROM purchase_order_line pol
+            LEFT JOIN pol_analytic ON pol.id = pol_analytic.id
+            LEFT JOIN account_analytic_account aaa ON pol_analytic.analytic_account_id = aaa.id
             LEFT JOIN purchase_order po on po.id = pol.order_id
             LEFT JOIN product_product pp ON pp.id = pol.product_id
             LEFT JOIN product_template pt ON pt.id = pp.product_tmpl_id
