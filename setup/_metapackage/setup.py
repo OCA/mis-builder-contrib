@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-mis-builder-contrib Odoo addons",
     version=version,
     install_requires=[
+        'odoo-addon-mis_builder_budget_product>=16.0dev,<16.1dev',
         'odoo-addon-mis_builder_total_committed_purchase>=16.0dev,<16.1dev',
     ],
     classifiers=[
