@@ -18,9 +18,9 @@ class MisAccountAnalyticLine(models.Model):
         string="Analytic Account", comodel_name="account.analytic.account"
     )
     company_id = fields.Many2one(string="Company", comodel_name="res.company")
-    balance = fields.Float(string="Balance")
-    debit = fields.Float(string="Debit")
-    credit = fields.Float(string="Credit")
+    balance = fields.Float()
+    debit = fields.Float()
+    credit = fields.Float()
     state = fields.Selection(
         [("draft", "Unposted"), ("posted", "Posted")], string="Status"
     )
