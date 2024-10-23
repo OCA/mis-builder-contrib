@@ -23,7 +23,7 @@
         />
         <field name="arch" type="xml">
             <field name="balance" position="after">
-                <field name="company_id" invisible="1" />
+                <field name="company_id" column_invisible="1" />
                 <field name="product_id" />
             </field>
         </field>
