@@ -17,33 +17,38 @@ MIS Builder Total Committed Purchase
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fmis--builder--contrib-lightgray.png?logo=github
-    :target: https://github.com/OCA/mis-builder-contrib/tree/16.0/mis_builder_total_committed_purchase
+    :target: https://github.com/OCA/mis-builder-contrib/tree/17.0/mis_builder_total_committed_purchase
     :alt: OCA/mis-builder-contrib
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/mis-builder-contrib-16-0/mis-builder-contrib-16-0-mis_builder_total_committed_purchase
+    :target: https://translation.odoo-community.org/projects/mis-builder-contrib-17-0/mis-builder-contrib-17-0-mis_builder_total_committed_purchase
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/mis-builder-contrib&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/mis-builder-contrib&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-Addon to create a alternative source based on all purchase order lines with MIS Builder : all the purchase orders that are not in draft or cancelled state are taken into account.
+Addon to create a alternative source based on all purchase order lines
+with MIS Builder : all the purchase orders that are not in draft or
+cancelled state are taken into account.
 
-The account_id of the committed purchase bases itself on the product's account_id if set
+The account_id of the committed purchase bases itself on the product's
+account_id if set
 
--   If not, it bases itself on the product_category's account_id if set
+- If not, it bases itself on the product_category's account_id if set
 
-    -   If not, it bases itself on the first set account_id on five generations of parent_category
+  - If not, it bases itself on the first set account_id on five
+    generations of parent_category
 
-        -   If none of them is set, it bases itself on the default value for new resources
+    - If none of them is set, it bases itself on the default value for
+      new resources
 
-            - Finally if it's not set, the account_id is set to 0
-
+      - Finally if it's not set, the account_id is set to 0
 
 **Needed improvement :**
 
-It would be better if the account_id tried to base itself on all the generations of parent_category, as long as it is set.
+It would be better if the account_id tried to base itself on all the
+generations of parent_category, as long as it is set.
 
 **Table of contents**
 
@@ -53,31 +58,37 @@ It would be better if the account_id tried to base itself on all the generations
 Usage
 =====
 
-This module provides a committed purchase view model, showing all purchases confirmed
+This module provides a committed purchase view model, showing all
+purchases confirmed
 
 Known issues / Roadmap
 ======================
 
-The mis_builder `roadmap <https://github.com/OCA/mis-builder/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement>`_
-and `known issues <https://github.com/OCA/mis-builder/issues?q=is%3Aopen+is%3Aissue+label%3Abug>`_ can
-be found on github.
+The mis_builder
+`roadmap <https://github.com/OCA/mis-builder/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement>`__
+and `known
+issues <https://github.com/OCA/mis-builder/issues?q=is%3Aopen+is%3Aissue+label%3Abug>`__
+can be found on github.
 
 Changelog
 =========
 
 15.0.1.0.1 (2022-11-24)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 **Features**
 
 - Add the product_id to the mis_builder_total_committed_purchase.
 
 15.0.1.0.0 (2022-08-30)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 **Features**
 
-- Add an addon to create a alternative source based on PO lines with MIS Builder, based on (`MIS Builder Demo <https://github.com/OCA/mis-builder/tree/15.0/mis_builder_demo>`_) addon.
+- Add an addon to create a alternative source based on PO lines with MIS
+  Builder, based on (`MIS Builder
+  Demo <https://github.com/OCA/mis-builder/tree/15.0/mis_builder_demo>`__)
+  addon.
 
 Bug Tracker
 ===========
@@ -85,7 +96,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/mis-builder-contrib/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/mis-builder-contrib/issues/new?body=module:%20mis_builder_total_committed_purchase%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/mis-builder-contrib/issues/new?body=module:%20mis_builder_total_committed_purchase%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -93,27 +104,32 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * ACSONE SA/NV
 * Camptocamp
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Stéphane Bidoul <stephane.bidoul@acsone.eu>
-* Arnaud Pineux <arnaud.pineux@acsone.eu>
-* Camille Morand <camille.morand@camptocamp.com>
-* `Trobz <https://trobz.com>`_:
-    * Dzung Tran <dungtd@trobz.com>
+- Stéphane Bidoul <stephane.bidoul@acsone.eu>
+
+- Arnaud Pineux <arnaud.pineux@acsone.eu>
+
+- Camille Morand <camille.morand@camptocamp.com>
+
+- `Trobz <https://trobz.com>`__:
+
+  - Dzung Tran <dungtd@trobz.com>
 
 Other credits
-~~~~~~~~~~~~~
+-------------
 
-The migration of this module from 15.0 to 16.0 was financially supported by Camptocamp
+The migration of this module from 15.0 to 16.0 was financially supported
+by Camptocamp
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -125,6 +141,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/mis-builder-contrib <https://github.com/OCA/mis-builder-contrib/tree/16.0/mis_builder_total_committed_purchase>`_ project on GitHub.
+This module is part of the `OCA/mis-builder-contrib <https://github.com/OCA/mis-builder-contrib/tree/17.0/mis_builder_total_committed_purchase>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

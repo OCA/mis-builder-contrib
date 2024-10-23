@@ -4,8 +4,8 @@
 
 {
     "name": "MIS Builder Total Committed Purchase",
-    "summary": """Addon to create a alternative source based on all purchase order line with
-    MIS Builder.""",
+    "summary": """Addon to create a alternative source based on all purchase order line
+    with MIS Builder.""",
     "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV, Camptocamp, Odoo Community Association (OCA)",

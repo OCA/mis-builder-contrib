@@ -7,7 +7,6 @@ from odoo.modules.module import get_module_resource
 
 
 class MisTotalCommittedPurchase(models.Model):
-
     _name = "mis.total.committed.purchase"
     _description = "MIS Total Purchase Commitment"
     _auto = False
