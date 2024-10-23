@@ -4,7 +4,7 @@
 {
     "name": "MIS Builder Analytic",
     "summary": "Provide account analytic lines for MIS builder reports",
-    "version": "14.0.1.0.1",
+    "version": "17.0.1.0.0",
     "license": "AGPL-3",
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/mis-builder-contrib",
