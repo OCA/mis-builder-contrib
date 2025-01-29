@@ -1,0 +1,1 @@
+Action 'Custom Export XLS' in `Accounting>Reporting>MIS Reports` to open the wizard to export to xlsx.
