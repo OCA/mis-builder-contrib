@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="mis_report_instance_contracts" model="mis.report.instance">
+        <field name="name">Demo Contracts</field>
+        <field name="report_id" ref="mis_report_contracts" />
+        <field name="comparison_mode" eval="True" />
+    </record>
+    <record id="mis_report_instance_contracts_3m" model="mis.report.instance.period">
+        <field name="name">3M</field>
+        <field name="report_instance_id" ref="mis_report_instance_contracts" />
+        <field name="source">actuals_alt</field>
+        <field name="source_aml_model_id" ref="model_mis_contract_line" />
+        <field name="mode">fix</field>
+        <field name="manual_date_from">2025-01-01</field>
+        <field name="manual_date_to">2025-03-31</field>
+    </record>
+    <record id="mis_report_instance_contracts_1y" model="mis.report.instance.period">
+        <field name="name">1Y</field>
+        <field name="report_instance_id" ref="mis_report_instance_contracts" />
+        <field name="source">actuals_alt</field>
+        <field name="source_aml_model_id" ref="model_mis_contract_line" />
+        <field name="mode">fix</field>
+        <field name="manual_date_from">2025-01-01</field>
+        <field name="manual_date_to">2025-12-31</field>
+    </record>
+</odoo>
