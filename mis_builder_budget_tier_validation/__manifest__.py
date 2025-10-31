@@ -4,8 +4,8 @@
     "name": "Mis Builder Budget Tier Validation",
     "summary": "Extends the functionality of Mis Builder Budget to "
     "support a tier validation process.",
-    "version": "13.0.1.0.0",
-    "website": "https://github.com/OCA/mis-builder/",
+    "version": "14.0.1.0.0",
+    "website": "https://github.com/OCA/mis-builder-contrib",
     "author": "QubiQ 2010, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
