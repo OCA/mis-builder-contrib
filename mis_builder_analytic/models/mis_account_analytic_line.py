@@ -24,6 +24,9 @@ class MisAccountAnalyticLine(models.Model):
     state = fields.Selection(
         [("draft", "Unposted"), ("posted", "Posted")], string="Status"
     )
+    move_line_id = fields.Many2one(
+        string="Journal Item", comodel_name="account.move.line"
+    )
 
     def init(self):
         tools.drop_view_if_exists(self._cr, "mis_account_analytic_line")
@@ -37,6 +40,7 @@ class MisAccountAnalyticLine(models.Model):
                     aal.general_account_id as account_id,
                     aal.account_id as analytic_account_id,
                     aal.company_id as company_id,
+                    aal.move_line_id AS move_line_id,
                     'posted'::VARCHAR as state,
                     CASE
                       WHEN aal.amount >= 0.0 THEN aal.amount
