@@ -67,6 +67,11 @@ msgid "ID"
 msgstr "ID"
 
 #. module: mis_builder_analytic
+#: model:ir.model.fields,field_description:mis_builder_analytic.field_mis_account_analytic_line__move_line_id
+msgid "Journal Item"
+msgstr ""
+
+#. module: mis_builder_analytic
 #: model:ir.model.fields,field_description:mis_builder_analytic.field_mis_account_analytic_line____last_update
 msgid "Last Modified on"
 msgstr "Ultima modifica il"
