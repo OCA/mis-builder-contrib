@@ -24,18 +24,18 @@ class MisBuilderBiSqlLine(models.Model):
                 ("mis_builder_activated", "=", True),
             ]
         )
+        vals_list = []
         for sql_view in sql_view_ids:
-            res = self.env[sql_view.model_id.model].search([])
-            for line in res:
-                mis_sql_line = self.env["mis.builder.bi.sql.line"].search(
-                    [
-                        ("bi_sql_model", "=", sql_view.model_id.id),
-                        ("res_id", "=", line.id),
-                    ],
-                    limit=1,
+            existing_res_ids = set(
+                self.search([("bi_sql_model", "=", sql_view.model_id.id)]).mapped(
+                    "res_id"
                 )
-                if not mis_sql_line:
-                    vals = {
+            )
+            for line in self.env[sql_view.model_id.model].search([]):
+                if line.id in existing_res_ids:
+                    continue
+                vals_list.append(
+                    {
                         "credit": line.x_credit,
                         "debit": line.x_debit,
                         "account_id": line.x_account_id.id,
@@ -44,6 +44,8 @@ class MisBuilderBiSqlLine(models.Model):
                         "analytic_account_id": line.x_analytic_account_id.id or False,
                         "bi_sql_model": sql_view.model_id.id,
                         "res_id": line.id,
+                        sql_view.view_name: line.id,
                     }
-                    vals[sql_view.view_name] = line.id
-                    self.create(vals)
+                )
+        if vals_list:
+            self.create(vals_list)

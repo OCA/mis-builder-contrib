@@ -5,7 +5,6 @@ from odoo import api, fields, models
 
 
 class MisReport(models.Model):
-
     _inherit = "mis.report"
 
     bi_sql_view = fields.Many2one(

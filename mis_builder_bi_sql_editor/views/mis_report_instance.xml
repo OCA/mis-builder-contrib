@@ -12,7 +12,7 @@
             ref="mis_builder.mis_report_instance_period_view_form"
         />
         <field name="arch" type="xml">
-            <field name="source_aml_model_id" position="after">                
+            <field name="source_aml_model_id" position="after">
                 <field
                     name="bi_sql_view"
                     required="bi_sql_view_required"

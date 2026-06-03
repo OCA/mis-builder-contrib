@@ -5,57 +5,56 @@ from odoo import api, fields, models
 
 
 class BiSQLView(models.Model):
-
     _inherit = "bi.sql.view"
 
     mis_builder_compatible = fields.Boolean(
         compute="_compute_mis_builder_compatible",
-        default=False,
     )
     mis_builder_activated = fields.Boolean(default=False)
 
-    @api.depends()
+    @api.depends(
+        "bi_sql_view_field_ids.name",
+        "bi_sql_view_field_ids.ttype",
+        "bi_sql_view_field_ids.many2one_model_id",
+    )
     def _compute_mis_builder_compatible(self):
-        compatible = True
-        model_sql_fields = self.bi_sql_view_field_ids
-        credit_field = model_sql_fields.filtered(
-            lambda x: x.name == "x_credit" and x.ttype == "float"
-        )
-        debit_field = model_sql_fields.filtered(
-            lambda x: x.name == "x_debit" and x.ttype == "float"
-        )
-        account_field = model_sql_fields.filtered(
-            lambda x: x.name == "x_account_id" and x.ttype == "many2one"
-        )
-        date_field = model_sql_fields.filtered(
-            lambda x: x.name == "x_date" and x.ttype == "date"
-        )
-        company_field = model_sql_fields.filtered(
-            lambda x: x.name == "x_company_id" and x.ttype == "many2one"
-        )
-        analytic_account_field = model_sql_fields.filtered(
-            lambda x: x.name == "x_analytic_account_id" and x.ttype == "many2one"
-        )
-
-        if (
-            not credit_field
-            or not debit_field
-            or not account_field
-            or account_field.many2one_model_id.model != "account.account"
-            or not date_field
-            or not company_field
-            or company_field.many2one_model_id.model != "res.company"
-            or (
-                analytic_account_field
-                and analytic_account_field.many2one_model_id.model
-                != "account.analytic.account"
+        for record in self:
+            model_sql_fields = record.bi_sql_view_field_ids
+            credit_field = model_sql_fields.filtered(
+                lambda x: x.name == "x_credit" and x.ttype == "float"
             )
-        ):
-            compatible = False
-
-        self.mis_builder_compatible = compatible
+            debit_field = model_sql_fields.filtered(
+                lambda x: x.name == "x_debit" and x.ttype == "float"
+            )
+            account_field = model_sql_fields.filtered(
+                lambda x: x.name == "x_account_id" and x.ttype == "many2one"
+            )
+            date_field = model_sql_fields.filtered(
+                lambda x: x.name == "x_date" and x.ttype == "date"
+            )
+            company_field = model_sql_fields.filtered(
+                lambda x: x.name == "x_company_id" and x.ttype == "many2one"
+            )
+            analytic_account_field = model_sql_fields.filtered(
+                lambda x: x.name == "x_analytic_account_id" and x.ttype == "many2one"
+            )
+            record.mis_builder_compatible = not (
+                not credit_field
+                or not debit_field
+                or not account_field
+                or account_field.many2one_model_id.model != "account.account"
+                or not date_field
+                or not company_field
+                or company_field.many2one_model_id.model != "res.company"
+                or (
+                    analytic_account_field
+                    and analytic_account_field.many2one_model_id.model
+                    != "account.analytic.account"
+                )
+            )
 
     def activate_mis_builder(self):
+        self.ensure_one()
         if self.mis_builder_compatible:
             model_id = (
                 self.env["ir.model"]
@@ -74,6 +73,7 @@ class BiSQLView(models.Model):
             self.mis_builder_activated = True
 
     def remove_mis_builder(self):
+        self.ensure_one()
         if self.mis_builder_compatible and self.mis_builder_activated:
             self.env["mis.builder.bi.sql.line"].search(
                 [("bi_sql_model", "=", self.model_id.id)]
@@ -99,13 +99,13 @@ class BiSQLView(models.Model):
         return super().button_set_draft()
 
     def button_refresh_materialized_view(self):
-        super().button_refresh_materialized_view()
+        res = super().button_refresh_materialized_view()
         if self.mis_builder_activated:
-            model = self.env["mis.builder.bi.sql.line"]
-            model._create_mis_builder_bi_sql_lines()
+            self.env["mis.builder.bi.sql.line"]._create_mis_builder_bi_sql_lines()
+        return res
 
-    def copy(self, default=None):
-        self.ensure_one()
-        default = dict(default or {})
-        default["mis_builder_activated"] = False
-        return super().copy(default)
+    def copy_data(self, default=None):
+        vals_list = super().copy_data(default=default)
+        for vals in vals_list:
+            vals["mis_builder_activated"] = False
+        return vals_list

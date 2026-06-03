@@ -7,7 +7,7 @@
         <field name="model">mis.report</field>
         <field name="inherit_id" ref="mis_builder.mis_report_view_form" />
         <field name="arch" type="xml">
-            <field name="move_lines_source" position="after">                
+            <field name="move_lines_source" position="after">
                 <field
                     name="bi_sql_view"
                     required="bi_sql_view_required"
