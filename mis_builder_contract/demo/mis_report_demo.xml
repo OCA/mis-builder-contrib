@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Demo data generated as requested -->
+<odoo>
+    <record id="mis_report_contracts" model="mis.report">
+        <field name="name">Demo Contracts</field>
+    </record>
+    <record id="mis_report_contracts_kpi_cus" model="mis.report.kpi">
+        <field name="report_id" ref="mis_report_contracts" />
+        <field name="name">cus</field>
+        <field name="description">contract/customer</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="mis_report_contracts_kpi_expr_cus" model="mis.report.kpi.expression">
+        <field name="kpi_id" ref="mis_report_contracts_kpi_cus" />
+        <field name="name">balp[400000]</field>
+    </record>
+    <record id="mis_report_contracts_kpi_sup" model="mis.report.kpi">
+        <field name="report_id" ref="mis_report_contracts" />
+        <field name="name">sup</field>
+        <field name="description">contract/supplier</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="mis_report_contracts_kpi_expr_sup" model="mis.report.kpi.expression">
+        <field name="kpi_id" ref="mis_report_contracts_kpi_sup" />
+        <field name="name">balp[600000]</field>
+    </record>
+</odoo>

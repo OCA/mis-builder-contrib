@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="mis_contract_line_view_tree" model="ir.ui.view">
+        <field name="name">mis.contract.analytic.line.tree</field>
+        <field name="model">mis.contract.line</field>
+        <field name="arch" type="xml">
+            <tree create="false" delete="false">
+                <field name="contract_line_id" />
+                <field name="date" />
+                <field name="company_id" />
+                <field name="account_id" />
+                <field name="quantity" />
+                <field name="specific_price" />
+                <field name="credit" />
+                <field name="debit" />
+            </tree>
+        </field>
+    </record>
+    <record id="mis_contract_line_view_form" model="ir.ui.view">
+        <field name="name">mis.contract.line.form</field>
+        <field name="model">mis.contract.line</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" delete="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="contract_line_id" />
+                            <field name="date" />
+                            <field name="company_id" />
+                            <field name="account_id" />
+                            <field name="quantity" />
+                            <field name="specific_price" />
+                        </group>
+                        <group>
+                            <field name="credit" />
+                            <field name="debit" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,88 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mis_builder_contract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-20 13:48+0000\n"
+"PO-Revision-Date: 2025-05-20 13:48+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_contract_line__account_id
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__account_id
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_contract_line__amount
+msgid "Amount"
+msgstr "Cantidad"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__contract_id
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: mis_builder_contract
+#: model:ir.model,name:mis_builder_contract.model_contract_line
+msgid "Contract Line"
+msgstr "Línea de contrato"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__credit
+msgid "Credit"
+msgstr "Crédito"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__debit
+msgid "Debit"
+msgstr "Débito"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__id
+msgid "ID"
+msgstr ""
+
+#. module: mis_builder_contract
+#: model:ir.model,name:mis_builder_contract.model_mis_contract_line
+msgid "MIS Contract Line"
+msgstr "Líneas de contrato MIS"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_contract_line__repetitions
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__repetitions
+msgid "Repetitions"
+msgstr "Repeticiones"
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__specific_price
+msgid "Specific Price"
+msgstr "Precio específico"
