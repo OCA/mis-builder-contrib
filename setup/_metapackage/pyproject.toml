@@ -1,8 +1,9 @@
 [project]
 name = "odoo-addons-oca-mis-builder-contrib"
-version = "17.0.20250314.0"
+version = "17.0.20260611.0"
 dependencies = [
     "odoo-addon-mis_builder_analytic>=17.0dev,<17.1dev",
+    "odoo-addon-mis_builder_contract>=17.0dev,<17.1dev",
 ]
 classifiers=[
     "Programming Language :: Python",
