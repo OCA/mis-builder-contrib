@@ -6,8 +6,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-20 11:43+0000\n"
-"PO-Revision-Date: 2025-05-20 11:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,14 +14,18 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: mis_builder_contract
-#: model:ir.model.fields,field_description:mis_builder_contract.field_contract_line__account_id
-#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__account_id
-msgid "Account"
+#: model:mis.report.instance.period,name:mis_builder_contract.mis_report_instance_contracts_1y
+msgid "1Y"
 msgstr ""
 
 #. module: mis_builder_contract
-#: model:ir.model.fields,field_description:mis_builder_contract.field_contract_line__amount
-msgid "Amount"
+#: model:mis.report.instance.period,name:mis_builder_contract.mis_report_instance_contracts_3m
+msgid "3M"
+msgstr ""
+
+#. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__account_id
+msgid "Account"
 msgstr ""
 
 #. module: mis_builder_contract
@@ -32,12 +34,7 @@ msgid "Company"
 msgstr ""
 
 #. module: mis_builder_contract
-#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__contract_id
-msgid "Contract"
-msgstr ""
-
-#. module: mis_builder_contract
-#: model:ir.model,name:mis_builder_contract.model_contract_line
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__contract_line_id
 msgid "Contract Line"
 msgstr ""
 
@@ -57,6 +54,12 @@ msgid "Debit"
 msgstr ""
 
 #. module: mis_builder_contract
+#: model:mis.report,name:mis_builder_contract.mis_report_contracts
+#: model:mis.report.instance,name:mis_builder_contract.mis_report_instance_contracts
+msgid "Demo Contracts"
+msgstr ""
+
+#. module: mis_builder_contract
 #: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__display_name
 msgid "Display Name"
 msgstr ""
@@ -72,12 +75,16 @@ msgid "MIS Contract Line"
 msgstr ""
 
 #. module: mis_builder_contract
+#: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__product_id
+msgid "Product"
+msgstr ""
+
+#. module: mis_builder_contract
 #: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__quantity
 msgid "Quantity"
 msgstr ""
 
 #. module: mis_builder_contract
-#: model:ir.model.fields,field_description:mis_builder_contract.field_contract_line__repetitions
 #: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__repetitions
 msgid "Repetitions"
 msgstr ""
@@ -85,4 +92,14 @@ msgstr ""
 #. module: mis_builder_contract
 #: model:ir.model.fields,field_description:mis_builder_contract.field_mis_contract_line__specific_price
 msgid "Specific Price"
+msgstr ""
+
+#. module: mis_builder_contract
+#: model:mis.report.kpi,description:mis_builder_contract.mis_report_contracts_kpi_cus
+msgid "contract/customer"
+msgstr ""
+
+#. module: mis_builder_contract
+#: model:mis.report.kpi,description:mis_builder_contract.mis_report_contracts_kpi_sup
+msgid "contract/supplier"
 msgstr ""
