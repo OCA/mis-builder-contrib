@@ -17,10 +17,10 @@
                     />
                     <field name="compute_report_company_by_company" />
                     <field name="wizard_line_ids">
-                        <tree create="1" edit="1" editable="top">
+                        <list create="1" edit="1" editable="top">
                             <field name="report_id" options="{'no_open': True}" />
                             <field name="date" />
-                        </tree>
+                        </list>
                     </field>
                 </group>
                 <footer>

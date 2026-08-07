@@ -21,8 +21,9 @@ class MisBuilderCustomExportXlsWizard(models.TransientModel):
     )
 
     compute_report_company_by_company = fields.Boolean(
-        help="Compute report company by company (one sheet by company and report) instead of"
-        " computing computing report one every company at once (one sheet by report)."
+        help="Compute report company by company (one sheet by company and report) "
+        "instead of computing computing report one "
+        "every company at once (one sheet by report)."
     )
 
     @api.model
@@ -49,7 +50,9 @@ class MisBuilderCustomExportXlsWizard(models.TransientModel):
             "mis_builder_xls_report_id_by_pivot_date": {
                 rec.report_id.id: rec.date for rec in self.wizard_line_ids
             },
-            "mis_builder_xls_company_by_company": self.compute_report_company_by_company,
+            "mis_builder_xls_company_by_company": (
+                self.compute_report_company_by_company
+            ),
         }
 
         # map date by instance

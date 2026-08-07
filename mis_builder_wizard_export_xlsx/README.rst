@@ -73,6 +73,7 @@ Contributors
 ------------
 
 - Zina Rasoamanana zina.rasoamanana@acsone.eu (https://www.acsone.eu/)
+- Samir GUESMI samir.guesmi@acsone.eu
 
 Maintainers
 -----------
