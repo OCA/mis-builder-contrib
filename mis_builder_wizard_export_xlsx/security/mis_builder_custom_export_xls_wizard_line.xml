@@ -2,7 +2,6 @@
 <!-- Copyright 2025 ACSONE SA/NV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record
         model="ir.model.access"
         id="mis_builder_custom_export_xls_wizard_line_access"
@@ -15,5 +14,4 @@
         <field name="perm_write" eval="1" />
         <field name="perm_unlink" eval="1" />
     </record>
-
 </odoo>

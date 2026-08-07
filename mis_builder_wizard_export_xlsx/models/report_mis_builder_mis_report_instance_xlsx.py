@@ -5,7 +5,6 @@ from odoo import models
 
 
 class MisBuilderXlsx(models.AbstractModel):
-
     _inherit = "report.mis_builder.mis_report_instance_xlsx"
 
     def generate_xlsx_report(self, workbook, data, objects):

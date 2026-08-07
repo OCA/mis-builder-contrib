@@ -5,7 +5,6 @@ from odoo import models
 
 
 class MisReportInstance(models.Model):
-
     _inherit = "mis.report.instance"
 
     def open_wizard_custom_export_xls(self):
