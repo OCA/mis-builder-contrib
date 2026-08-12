@@ -26,8 +26,8 @@ class MisAccountAnalyticLine(models.Model):
     )
 
     def init(self):
-        tools.drop_view_if_exists(self._cr, "mis_account_analytic_line")
-        self._cr.execute(
+        tools.drop_view_if_exists(self.env.cr, "mis_account_analytic_line")
+        self.env.cr.execute(
             """
             CREATE OR REPLACE VIEW mis_account_analytic_line AS (
                 SELECT

@@ -6,7 +6,7 @@
         <field name="name">mis.account.analytic.line.tree</field>
         <field name="model">mis.account.analytic.line</field>
         <field name="arch" type="xml">
-            <tree create="false" delete="false">
+            <list create="false" delete="false">
                 <field name="analytic_line_id" />
                 <field name="date" />
                 <field name="company_id" />
@@ -15,7 +15,7 @@
                 <field name="credit" />
                 <field name="debit" />
                 <field name="balance" />
-            </tree>
+            </list>
         </field>
     </record>
 
