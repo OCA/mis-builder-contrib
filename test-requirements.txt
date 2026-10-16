@@ -1,0 +1,2 @@
+odoo-addon-mis-builder @ git+https://github.com/oca/mis-builder.git@refs/pull/850/head#subdirectory=mis_builder
+odoo-addon-account-code-single-company @ git+https://github.com/oca/account-financial-tools.git@refs/pull/2378/head#subdirectory=account_code_single_company
