@@ -1,5 +1,11 @@
 CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
-    SELECT ROW_NUMBER() OVER() AS id, mis_total_committed_purchase.* FROM (
+    SELECT
+        ROW_NUMBER() OVER (
+            ORDER BY mis_total_committed_purchase.res_model,
+                mis_total_committed_purchase.res_id,
+                mis_total_committed_purchase.analytic_account_id
+        ) AS id,
+        mis_total_committed_purchase.* FROM (
         WITH currency_rate as (
             SELECT
               r.currency_id,
