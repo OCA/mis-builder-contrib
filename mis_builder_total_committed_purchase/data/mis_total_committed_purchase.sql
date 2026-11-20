@@ -17,10 +17,19 @@ CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
         ),
         pol_analytic AS (
             SELECT
-                id,
-                jsonb_object_keys(analytic_distribution)::INTEGER AS analytic_account_id,
-                (analytic_distribution -> jsonb_object_keys(analytic_distribution))::NUMERIC AS analytic_amount
-            FROM purchase_order_line
+                pol_d.id,
+                split_part(dist.key, ',', 1)::INTEGER AS analytic_account_id,
+                dist.value::NUMERIC AS analytic_amount
+            FROM purchase_order_line pol_d,
+                jsonb_each_text(pol_d.analytic_distribution) AS dist
+        ),
+        expense_default AS (
+            SELECT d.company_id, d.json_value::INTEGER AS account_id
+            FROM ir_default d
+                JOIN ir_model_fields f ON f.id = d.field_id
+            WHERE f.model = 'product.category'
+                AND f.name = 'property_account_expense_categ_id'
+                AND d.user_id IS NULL
         )
 
         /* ALL CONFIRMED PURCHASES */
@@ -32,16 +41,17 @@ CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
         pol.order_id as purchase_order_id,
         pol.id AS res_id,
         'purchase.order.line' AS res_model,
-        CASE
-          WHEN (cast(split_part(ip.value_reference, ',', 2) AS INTEGER) IS NOT NULL) THEN cast(split_part(ip.value_reference, ',', 2) AS INTEGER)
-          WHEN (cast(split_part(ipc1.value_reference, ',', 2) AS INTEGER) IS NOT NULL) THEN cast(split_part(ipc1.value_reference, ',', 2) AS INTEGER)
-          WHEN (cast(split_part(ipc2.value_reference, ',', 2) AS INTEGER) IS NOT NULL) THEN cast(split_part(ipc2.value_reference, ',', 2) AS INTEGER)
-          WHEN (cast(split_part(ipc3.value_reference, ',', 2) AS INTEGER) IS NOT NULL) THEN cast(split_part(ipc3.value_reference, ',', 2) AS INTEGER)
-          WHEN (cast(split_part(ipc4.value_reference, ',', 2) AS INTEGER) IS NOT NULL) THEN cast(split_part(ipc4.value_reference, ',', 2) AS INTEGER)
-          WHEN (cast(split_part(ipc5.value_reference, ',', 2) AS INTEGER) IS NOT NULL) THEN cast(split_part(ipc5.value_reference, ',', 2) AS INTEGER)
-          WHEN (cast(split_part(ipd.value_reference, ',', 2) AS INTEGER) IS NOT NULL) THEN cast(split_part(ipd.value_reference, ',', 2) AS INTEGER)
-          ELSE cast(NULL AS INTEGER)
-        END AS account_id,
+        COALESCE(
+            (pt.property_account_expense_id ->> po.company_id::TEXT)::INTEGER,
+            (pc1.property_account_expense_categ_id ->> po.company_id::TEXT)::INTEGER,
+            (pc2.property_account_expense_categ_id ->> po.company_id::TEXT)::INTEGER,
+            (pc3.property_account_expense_categ_id ->> po.company_id::TEXT)::INTEGER,
+            (pc4.property_account_expense_categ_id ->> po.company_id::TEXT)::INTEGER,
+            (pc5.property_account_expense_categ_id ->> po.company_id::TEXT)::INTEGER,
+            (SELECT ed.account_id FROM expense_default ed
+             WHERE ed.company_id = po.company_id OR ed.company_id IS NULL
+             ORDER BY ed.company_id NULLS LAST LIMIT 1)
+        ) AS account_id,
 
         CASE
             WHEN
@@ -73,13 +83,6 @@ CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
             LEFT JOIN product_category pc3 ON pc3.id = pc2.parent_id
             LEFT JOIN product_category pc4 ON pc4.id = pc3.parent_id
             LEFT JOIN product_category pc5 ON pc5.id = pc4.parent_id
-            LEFT JOIN ir_property ip ON ip.name = 'property_account_expense_id' AND ip.type='many2one' AND ip.res_id ='product.template,' || pt.id
-            LEFT JOIN ir_property ipc1 ON ipc1.name = 'property_account_expense_categ_id' AND ipc1.type='many2one' AND ipc1.res_id ='product.category,' || pc1.id
-            LEFT JOIN ir_property ipc2 ON ipc2.name = 'property_account_expense_categ_id' AND ipc2.type='many2one' AND ipc2.res_id ='product.category,' || pc2.id
-            LEFT JOIN ir_property ipc3 ON ipc3.name = 'property_account_expense_categ_id' AND ipc3.type='many2one' AND ipc3.res_id ='product.category,' || pc3.id
-            LEFT JOIN ir_property ipc4 ON ipc4.name = 'property_account_expense_categ_id' AND ipc4.type='many2one' AND ipc4.res_id ='product.category,' || pc4.id
-            LEFT JOIN ir_property ipc5 ON ipc5.name = 'property_account_expense_categ_id' AND ipc5.type='many2one' AND ipc5.res_id ='product.category,' || pc5.id
-            LEFT JOIN ir_property ipd ON ipd.name = 'property_account_expense_categ_id' AND ipd.type='many2one' AND (ipd.res_id IS NULL OR ipd.res_id = '') AND ipd.company_id=po.company_id
             LEFT JOIN currency_rate cur on (cur.currency_id = po.currency_id and
                 cur.company_id = po.company_id and
                 cur.date_start <= coalesce(po.date_order, now()) and

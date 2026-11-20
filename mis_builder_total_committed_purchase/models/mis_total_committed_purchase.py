@@ -3,7 +3,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models, tools
-from odoo.modules.module import get_module_resource
 
 
 class MisTotalCommittedPurchase(models.Model):
@@ -24,12 +23,8 @@ class MisTotalCommittedPurchase(models.Model):
     date = fields.Date()
 
     def init(self):
-        with open(
-            get_module_resource(
-                "mis_builder_total_committed_purchase",
-                "data",
-                "mis_total_committed_purchase.sql",
-            )
+        with tools.file_open(
+            "mis_builder_total_committed_purchase/data/mis_total_committed_purchase.sql"
         ) as f:
             tools.drop_view_if_exists(self.env.cr, "mis_total_committed_purchase")
             self.env.cr.execute(f.read())

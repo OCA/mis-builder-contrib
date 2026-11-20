@@ -3,10 +3,10 @@
         License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record model="ir.ui.view" id="mis_total_committed_purchase_tree_view">
-        <field name="name">mis.total.committed.purchase.tree</field>
+        <field name="name">mis.total.committed.purchase.list</field>
         <field name="model">mis.total.committed.purchase</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="date" />
                 <field name="name" />
                 <field name="purchase_order_id" />
@@ -18,7 +18,7 @@
                 <field name="product_id" />
                 <field name="debit" />
                 <field name="credit" />
-            </tree>
+            </list>
         </field>
     </record>
 </odoo>
