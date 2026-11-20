@@ -6,3 +6,5 @@
 
 - [Trobz](https://trobz.com):  
   - Dzung Tran \<<dungtd@trobz.com>\>
+- [KMEE](https://kmee.com.br):
+  - Luis Felipe Mileo \<<mileo@kmee.com.br>\>

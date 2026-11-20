@@ -55,7 +55,10 @@ CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
 
         CASE
             WHEN
-                aaa.id = pol_analytic.analytic_account_id
+                (
+                    pol_analytic.analytic_account_id IS NULL
+                    OR aaa.id = pol_analytic.analytic_account_id
+                )
                 AND (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2) >= 0.0
             THEN (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2)
                 * COALESCE(pol_analytic.analytic_amount, 100.0) / 100.0
@@ -64,7 +67,10 @@ CREATE OR REPLACE VIEW mis_total_committed_purchase AS (
 
         CASE
             WHEN
-                aaa.id = pol_analytic.analytic_account_id
+                (
+                    pol_analytic.analytic_account_id IS NULL
+                    OR aaa.id = pol_analytic.analytic_account_id
+                )
                 AND (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2)  < 0
             THEN (pol.price_unit / COALESCE(cur.rate, 1.0) * pol.product_qty)::decimal(16,2)
                 * COALESCE(pol_analytic.analytic_amount, 100.0) / 100.0

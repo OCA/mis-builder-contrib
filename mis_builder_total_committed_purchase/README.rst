@@ -122,6 +122,10 @@ Contributors
 
   - Dzung Tran <dungtd@trobz.com>
 
+- `KMEE <https://kmee.com.br>`__:
+
+  - Luis Felipe Mileo <mileo@kmee.com.br>
+
 Other credits
 -------------
 
