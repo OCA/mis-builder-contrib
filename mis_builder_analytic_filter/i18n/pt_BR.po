@@ -1,0 +1,30 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mis_builder_analytic_filter
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: mis_builder_analytic_filter
+#: model:ir.model.fields,field_description:mis_builder_analytic_filter.field_mis_account_analytic_line__plan_id
+msgid "Analytic Plan"
+msgstr "Plano Analítico"
+
+#. module: mis_builder_analytic_filter
+#: model:ir.model.fields,field_description:mis_builder_analytic_filter.field_mis_account_analytic_line__tag_ids
+msgid "Analytic Tags"
+msgstr "Etiquetas Analíticas"
+
+#. module: mis_builder_analytic_filter
+#: model:ir.model,name:mis_builder_analytic_filter.model_mis_account_analytic_line
+msgid "MIS Account Analytic Line"
+msgstr "Linha Analítica MIS"
