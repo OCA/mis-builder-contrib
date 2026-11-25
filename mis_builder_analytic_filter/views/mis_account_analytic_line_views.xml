@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 - TODAY, Wesley Oliveira <wesley.oliveira@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="mis_account_analytic_line_search" model="ir.ui.view">
+        <field name="name">mis.account.analytic.line.search</field>
+        <field name="model">mis.account.analytic.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="analytic_account_id" />
+                <field
+                    name="plan_id"
+                    filter_domain="[('analytic_account_id.plan_id', 'child_of', raw_value)]"
+                />
+                <field name="tag_ids" />
+                <field name="account_id" />
+                <field name="company_id" groups="base.group_multi_company" />
+            </search>
+        </field>
+    </record>
+</odoo>
